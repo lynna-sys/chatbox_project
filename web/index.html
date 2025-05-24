@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Support Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .chat-header {
+            background: #ff6f61;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-msg {
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .user-msg {
+            align-self: flex-end;
+            background: #dcf8c6;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .bot-msg {
+            align-self: flex-start;
+            background: #f1f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background: #e65b50;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            🛍️ Shopping Support Bot
+        </div>
+        <div class="chat-box" id="chatbox"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask me something...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>
