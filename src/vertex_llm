@@ -1,0 +1,32 @@
+const fs = require("fs");
+const path = require("path");
+
+function loadFAQDataLocal() {
+  const dataPath = path.join(__dirname, "../data/chat-data.json");
+  const rawData = fs.readFileSync(dataPath);
+  return JSON.parse(rawData);
+}
+
+function buildContext(userQuestion, faqData) {
+  let context = "You are a helpful shopping assistant. Answer based on the FAQs below.\n\n";
+  faqData.forEach(item => {
+    context += `Q: ${item.question}\nA: ${item.answer}\n\n`;
+  });
+  context += `Customer: ${userQuestion}\nAssistant:`;
+  return context;
+}
+
+function askBot(userQuestion) {
+  const faqData = loadFAQDataLocal();
+  const prompt = buildContext(userQuestion, faqData);
+
+  // Fallback: match manually
+  for (const item of faqData) {
+    if (item.question.toLowerCase().includes(userQuestion.toLowerCase())) {
+      return item.answer;
+    }
+  }
+  return "Sorry, I couldn't find an answer. Please try rephrasing your question.";
+}
+
+module.exports = { askBot };
